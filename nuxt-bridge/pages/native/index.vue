@@ -5,10 +5,10 @@
 
     <nav>
       <ul>
-        <li><NuxtLink to="/native/1-explicit">Pattern 1: Explicit .native</NuxtLink></li>
-        <li><NuxtLink to="/native/2-hidden">Pattern 2: Hidden behavior</NuxtLink></li>
-        <li><NuxtLink to="/native/3-forward-attrs">Pattern 3: Fix A - Forward attrs</NuxtLink></li>
-        <li><NuxtLink to="/native/4-reemit">Pattern 4: Fix B - Re-emit</NuxtLink></li>
+        <li><NuxtLink to="/native/explicit">Pattern 1: Explicit .native</NuxtLink></li>
+        <li><NuxtLink to="/native/hidden">Pattern 2: Hidden behavior</NuxtLink></li>
+        <li><NuxtLink to="/native/forward-attrs">Pattern 3: Fix A - Forward attrs</NuxtLink></li>
+        <li><NuxtLink to="/native/reemit">Pattern 4: Fix B - Re-emit</NuxtLink></li>
       </ul>
     </nav>
 

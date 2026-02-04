@@ -5,6 +5,9 @@ export default defineNuxtConfig({
     nitro: true,
     vite: false,
   },
+  components: [
+    { path: '~/components', pathPrefix: false },
+  ],
   devServer: {
     port: 5001,
   },
