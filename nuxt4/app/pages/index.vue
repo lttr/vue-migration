@@ -6,6 +6,7 @@
     <nav>
       <ul>
         <li><NuxtLink to="/native/">.native modifier patterns</NuxtLink></li>
+        <li><NuxtLink to="/listeners/">$listeners patterns</NuxtLink></li>
       </ul>
     </nav>
   </div>
