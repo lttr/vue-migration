@@ -17,7 +17,7 @@
 
     <section>
       <h2>3. Fix A: Forward attrs</h2>
-      <p>Child uses <code>v-bind="attrsWithListeners"</code> composable</p>
+      <p>Child uses <code>v-bind="$attrs" v-on="$listeners"</code></p>
       <ForwardChild @click="log('forward', '@click fired via forwarded attrs')" />
     </section>
 
@@ -25,6 +25,13 @@
       <h2>4. Fix B: Re-emit</h2>
       <p>Child explicitly emits <code>click</code> event</p>
       <ReEmitChild @click="log('reemit', '@click fired via explicit emit')" />
+    </section>
+
+    <section class="danger">
+      <h2>5. Double-fire danger</h2>
+      <p>Child has internal <code>@click</code>, parent also adds <code>@click</code></p>
+      <DoubleFireChild @click="log('double', 'PARENT handler fired')" />
+      <p class="hint">Vue 2: only internal fires. Vue 3: BOTH fire!</p>
     </section>
 
     <p class="back"><NuxtLink to="/">← Back to home</NuxtLink></p>
@@ -46,6 +53,15 @@ section {
   padding: 16px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
+}
+section.danger {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+.hint {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #dc2626;
 }
 h2 {
   margin: 0 0 8px;

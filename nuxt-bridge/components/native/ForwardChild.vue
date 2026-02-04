@@ -1,11 +1,15 @@
 <template>
-  <button class="forward-btn" v-bind="attrsWithListeners">Click Me (ForwardChild)</button>
+  <button class="forward-btn" v-bind="attrsAndListeners" v-on="$listeners">Click Me (ForwardChild)</button>
 </template>
 
-<script setup lang="ts">
-import { useAttrsWithListeners } from '~/composables/useAttrsWithListeners'
-
-const attrsWithListeners = useAttrsWithListeners()
+<script lang="ts">
+export default {
+  computed: {
+    attrsAndListeners() {
+      return this.$attrs
+    }
+  }
+}
 </script>
 
 <style scoped>
