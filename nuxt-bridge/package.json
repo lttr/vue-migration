@@ -2,7 +2,7 @@
   "name": "nuxt-bridge",
   "private": true,
   "scripts": {
-    "dev": "nuxi dev",
+    "dev": "nuxi dev --port 5001",
     "build": "nuxi build",
     "prepare": "nuxi prepare"
   },

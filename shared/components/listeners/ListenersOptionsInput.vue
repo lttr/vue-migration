@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { useAttrsWithListeners } from '~/composables/useAttrsWithListeners'
+import { useAttrsWithListeners } from '../../composables/useAttrsWithListeners'
 
 // Options API with composable shim
 // TODO(vue3-cleanup): replace with useAttrs() + v-bind="$attrs"

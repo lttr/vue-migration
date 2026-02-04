@@ -4,8 +4,8 @@
 
 <script setup lang="ts">
 // Intentionally: no emit, no v-bind="$attrs" forwarding
-// In Vue 2: parent @click does nothing (it's not native, component doesn't emit)
-// In Vue 3: @click becomes a fallthrough attr and fires on root element
+// Vue 2: parent @click does nothing (not native, component doesn't emit)
+// Vue 3: @click becomes fallthrough attr and fires on root element
 </script>
 
 <style scoped>

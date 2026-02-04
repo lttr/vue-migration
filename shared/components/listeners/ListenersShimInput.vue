@@ -7,7 +7,7 @@ export default { inheritAttrs: false }
 </script>
 
 <script setup lang="ts">
-import { useAttrsWithListeners } from '~/composables/useAttrsWithListeners'
+import { useAttrsWithListeners } from '../../composables/useAttrsWithListeners'
 
 // TODO(vue3-cleanup): replace with useAttrs() + v-bind="$attrs"
 const { attrs, listeners } = useAttrsWithListeners()

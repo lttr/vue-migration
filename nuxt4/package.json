@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nuxi dev",
+    "dev": "nuxi dev --port 5002",
     "build": "nuxi build"
   },
   "dependencies": {

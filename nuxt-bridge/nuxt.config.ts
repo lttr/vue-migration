@@ -7,7 +7,11 @@ export default defineNuxtConfig({
   },
   components: [
     { path: '~/components', pathPrefix: false },
+    { path: '../shared/components', pathPrefix: false },
   ],
+  imports: {
+    dirs: ['../shared/composables'],
+  },
   devServer: {
     port: 5001,
   },
