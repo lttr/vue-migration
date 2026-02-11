@@ -18,20 +18,33 @@
     </section>
 
     <section class="fix">
-      <h2>2. Explicit binding (recommended)</h2>
-      <p>Uses <code>modelValue</code> + <code>update:modelValue</code>. Parents bind explicitly.</p>
-      <VModelExplicitInput
-        :model-value="explicitText"
-        @update:model-value="explicitText = $event"
+      <h2>2. Explicit value/input binding (recommended)</h2>
+      <p>Same <code>value</code>/<code>input</code> component - just skip <code>v-model</code> in the parent.</p>
+      <VModelLegacyInput
+        :value="explicitText"
+        @input="explicitText = $event"
       />
       <output>{{ explicitText }}</output>
-      <p class="note">Primary recommendation. No compat shim needed -
-        Vue 2.7 treats <code>modelValue</code> as a regular prop. Cleanup: replace with <code>defineModel()</code>,
-        parents switch to <code>v-model</code> shorthand.</p>
+      <p class="note">Simplest fix: the component doesn't change at all. Since <code>:value</code> and
+        <code>@input</code> are regular props/events (no desugaring), they work identically in Vue 2 and Vue 3.
+        Cleanup: replace with <code>defineModel()</code>, parents switch to <code>v-model</code> shorthand.</p>
     </section>
 
     <section class="fix alt">
-      <h2>3. Dual pattern (only if v-model shorthand required)</h2>
+      <h2>3. Explicit modelValue binding</h2>
+      <p>Uses <code>modelValue</code> + <code>update:modelValue</code>. Parents bind explicitly.</p>
+      <VModelExplicitInput
+        :model-value="modelValueText"
+        @update:modelValue="modelValueText = $event"
+      />
+      <output>{{ modelValueText }}</output>
+      <p class="note">Pre-aligns the component with Vue 3's <code>v-model</code> contract, but requires
+        camelCase event listener in Vue 2 (<code>@update:modelValue</code>, not <code>@update:model-value</code>)
+        because Vue 2 does not normalize event names.</p>
+    </section>
+
+    <section class="fix alt">
+      <h2>4. Dual pattern (only if v-model shorthand required)</h2>
       <p>Accepts both <code>value</code> and <code>modelValue</code>, emits both events.</p>
       <VModelDualInput v-model="dualText" />
       <output>{{ dualText }}</output>
@@ -40,13 +53,13 @@
     </section>
 
     <section class="fix">
-      <h2>4. Named fields (explicit props)</h2>
+      <h2>5. Named fields (explicit props)</h2>
       <p>Multiple named props with <code>update:propName</code> events.</p>
       <VModelNamedFields
         :first-name="firstName"
         :last-name="lastName"
-        @update:first-name="firstName = $event"
-        @update:last-name="lastName = $event"
+        @update:firstName="firstName = $event"
+        @update:lastName="lastName = $event"
       />
       <output>{{ firstName }} {{ lastName }}</output>
       <p class="note">Compatible pattern for multiple v-models. Cleanup: replace with named <code>defineModel('firstName')</code>,
@@ -62,6 +75,7 @@ import { ref } from 'vue'
 
 const legacyText = ref('hello')
 const explicitText = ref('hello')
+const modelValueText = ref('hello')
 const dualText = ref('hello')
 const firstName = ref('Jane')
 const lastName = ref('Doe')
